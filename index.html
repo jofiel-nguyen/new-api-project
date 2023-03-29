@@ -2,15 +2,13 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Weather Forecast</title>
+    <title>Earthquake Data</title>
     <title>Bored API Activity Suggestion</title>
+    <link rel="stylesheet" href="./assets/style.css">
   </head>
   <body>
-    <h1>Weather Forecast</h1>
-    <label for="location">Enter a location:</label>
-    <input type="text" id="location" name="location">
-    <button type="button" onclick="getWeather()">Get Weather</button>
-    <p id="weather"></p>
+    <button id="fetch-button">Fetch Earthquake Data</button>
+    <div id="earthquake-data"></div>
     <h1>Feeling Bored?</h1>
     <p>Click the button below for a suggestion on what to do:</p>
     <button onclick="getActivity()">Get Activity</button>

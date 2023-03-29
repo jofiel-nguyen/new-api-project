@@ -1,23 +1,31 @@
+const fetchButton = document.getElementById("fetch-button");
+const earthquakeDataDiv = document.getElementById("earthquake-data");
 
-    function getWeather() {
-        // Get the user's location input
-        const location = document.getElementById('location').value;
+fetchButton.addEventListener("click", () => {
+  fetch("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-03-01&endtime=2023-03-02&minmagnitude=5")
+    .then(response => response.json())
+    .then(data => {
+      const earthquakes = data.features;
+      const earthquakeList = document.createElement("ul");
+      earthquakeList.classList.add("earthquake-list");
 
-        // Make a GET request to the weather API endpoint
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=API-key`)
-          .then(response => response.json())
-          .then(data => {
-            // Extract the weather information from the response
-            const weather = data.weather[0].description;
-            const temperature = Math.round(data.main.temp - 273.15); // Convert from Kelvin to Celsius
-            // Display the weather information on the page
-            document.getElementById('weather').textContent = `The weather in ${location} is ${weather} with a temperature of ${temperature}°C.`;
-          })
-          .catch(error => {
-            console.log('Something went wrong:', error);
-            document.getElementById('weather').textContent = 'Sorry, we could not get the weather information for your location. Please try again later.';
-          });
-      }
+      earthquakes.forEach(earthquake => {
+        const earthquakeItem = document.createElement("li");
+        earthquakeItem.classList.add("earthquake-item");
+        earthquakeItem.innerHTML = `${earthquake.properties.place} - Magnitude ${earthquake.properties.mag}`;
+        earthquakeList.appendChild(earthquakeItem);
+      });
+
+      earthquakeDataDiv.innerHTML = "";
+      earthquakeDataDiv.appendChild(earthquakeList);
+    })
+    .catch(error => {
+      console.error(error);
+      earthquakeDataDiv.innerHTML = "An error occurred while fetching earthquake data.";
+    });
+});
+
+
       function getActivity() {
         fetch('https://www.boredapi.com/api/activity')
           .then(response => response.json())
