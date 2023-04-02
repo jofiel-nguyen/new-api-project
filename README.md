@@ -1,1 +1,1 @@
-# new-api-project
+# recipe-search-app

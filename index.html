@@ -1,19 +1,27 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>Earthquake Data</title>
-    <title>Bored API Activity Suggestion</title>
-    <link rel="stylesheet" href="./assets/style.css">
-  </head>
-  <body>
-    <button id="fetch-button">Fetch Earthquake Data</button>
-    <div id="earthquake-data"></div>
-    <h1>Feeling Bored?</h1>
-    <p>Click the button below for a suggestion on what to do:</p>
-    <button onclick="getActivity()">Get Activity</button>
-    <p id="activity"></p>
-     <script src="./assets/scripts.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Search</title>
+    <script src="./assets/script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="welcome-module" style="background-color: #f2f2f2; padding: 20px; border-radius: 10px; text-align: center;">
+        <h1>Welcome to Recipe Search App!</h1>
+        <p>To get started, enter a recipe name or ingredient in the search bar below.</p>
+        <input type="text" id="search-input" placeholder="Enter recipe name or ingredient">
+        <button type="button" id="search-button">Search</button>
+    </div>
+    <div id="results-container"></div>
+    <div>
+        <button type="button" id="videos-button">Click here to see videos about recipes</button>
+      </div>
+      
+    <div id="video-results-container"></div>
 
-  </body>
+</body>
+
 </html>
